@@ -1,21 +1,28 @@
 artifact_path: model
 flavors:
   python_function:
-    env: conda.yaml
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
     loader_module: mlflow.sklearn
     model_path: model.pkl
-    python_version: 3.8.10
+    predict_fn: predict
+    python_version: 3.10.12
   sklearn:
+    code: null
     pickled_model: model.pkl
     serialization_format: cloudpickle
-    sklearn_version: 0.24.1
-model_uuid: 857f2cf5ff7e42d4a3b1ad9831e624fe
-run_id: 68baff0203344dfebe89a6c73c6d6cfe
+    sklearn_version: 1.1.1
+mlflow_version: 2.9.2
+model_size_bytes: 35216
+model_uuid: 0e2eaeb0fd8a4816ba85ea50769e6669
+run_id: a7106d297ed4438fa37fe111efa50b7e
 saved_input_example_info:
   artifact_path: input_example.json
   pandas_orient: split
   type: dataframe
 signature:
-  inputs: '[{"name": "text", "type": "string"}]'
+  inputs: '[{"type": "string", "name": "text"}]'
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "object", "shape": [-1]}}]'
-utc_time_created: '2022-03-21 10:41:37.370867'
+  params: null
+utc_time_created: '2024-08-30 18:33:01.254528'
