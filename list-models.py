@@ -1,6 +1,14 @@
-from pprint import pprint
+import mlflow
 from mlflow.tracking import MlflowClient
 
+mlflow.set_tracking_uri("databricks")
+# Initialize the MLflow client
 client = MlflowClient()
-for rm in client.list_registered_models():
-    pprint(dict(rm), indent=4)
+
+# Search for all registered models
+registered_models = client.search_registered_models()
+
+# Print the names of all registered models
+print("Registered Models:")
+for model in registered_models:
+    print(f"- {model.name}")

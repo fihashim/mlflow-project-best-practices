@@ -67,11 +67,16 @@ export MLFLOW_TRACKING_URI=databricks
 ```
 
 ```python
-from pprint import pprint
-from mlflow.tracking import MlflowClient
+# Initialize the MLflow client
 client = MlflowClient()
-for rm in client.list_registered_models():
-  pprint(dict(rm), indent=4)
+
+# Search for all registered models
+registered_models = client.search_registered_models()
+
+# Print the names of all registered models
+print("Registered Models:")
+for model in registered_models:
+    print(f"- {model.name}")
 ```
 
 
@@ -123,3 +128,7 @@ Run it with `mlserve`
  * [Watch Walkthrough on O'Reilly](https://learning.oreilly.com/videos/mlops-platforms-from/032232022VIDEOPAIML/)
  
  
+## Note:
+1. You need to configure DATABRICKS_HOST and DATABRICKS_TOKEN by generating an access key and storing it in the Github repository. 
+2. You need to install databricks-cli from the [source](https://docs.databricks.com/en/dev-tools/cli/install.html)
+3. Changes were made to list-models.py to update according to current mlflow documentation (30/08/2024)
